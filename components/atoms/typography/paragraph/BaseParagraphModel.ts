@@ -1,9 +1,9 @@
 export default class BaseParagraphModel {
-    content: string
+    content: string | any
     style: string
     additionalClass: string
 
-    constructor(content: string, style: string = 'light',additionalClass: string = '') {
+    constructor(content: string | any, style: string = 'light',additionalClass: string = '') {
         this.content = content
 
         const EXPECTED_STYLES: Array<string> = [

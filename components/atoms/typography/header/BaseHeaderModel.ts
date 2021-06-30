@@ -1,9 +1,9 @@
 export default class BaseHeaderModel {
-    content: string
+    content: string | any
     style: string
     size: number
 
-    constructor(content: string, size: number = 1, style: string = 'light') {
+    constructor(content: string | any, size: number = 1, style: string = 'light') {
         this.content = content
 
         const EXPECTED_STYLES: Array<string> = [

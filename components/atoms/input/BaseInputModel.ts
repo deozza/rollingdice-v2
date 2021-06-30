@@ -2,13 +2,13 @@ export default class BaseInputModele{
     type:string
     id: string
     name: string
-    label: string
+    label: string | any
     value: any
     required: boolean
     style: string
-    error: string
+    error: string | any
 
-    constructor(type: string, id: string, name: string, label: string, required: boolean = false, value: any = null, style: string = 'light') {
+    constructor(type: string, id: string, name: string, label: string | any, required: boolean = false, value: any = null, style: string = 'light') {
 
         const expectedType: Array<string> = [
             'text',

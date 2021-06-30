@@ -2,9 +2,9 @@ import {Success} from "./types/Success";
 import {Error} from "./types/Error";
 
 export class Result {
-    success?: Success = null
+    success: Success | null = null
     errors: Array<Error> = []
-    content: object
+    content: object = {}
 
     public addSuccess(type: string,  code: number){
         this.success = new Success(type, code)

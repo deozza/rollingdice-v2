@@ -1,24 +1,28 @@
-<script lang="ts">
-    import BaseHeaderModel from "./BaseHeaderModel";
+<template>
+  <h1 v-if="baseHeaderModel.size === 1" :class="baseHeaderModel.style">{{baseHeaderModel.content}}</h1>
+  <h2 v-else-if="baseHeaderModel.size === 2" :class="baseHeaderModel.style">{{baseHeaderModel.content}}</h2>
+  <h3 v-else-if="baseHeaderModel.size === 3" :class="baseHeaderModel.style">{{baseHeaderModel.content}}</h3>
+  <h4 v-else-if="baseHeaderModel.size === 4" :class="baseHeaderModel.style">{{baseHeaderModel.content}}</h4>
+  <h5 v-else-if="baseHeaderModel.size === 5" :class="baseHeaderModel.style">{{baseHeaderModel.content}}</h5>
+  <h6 v-else :class="baseHeaderModel.style">{{baseHeaderModel.content}}</h6>
+</template>
 
-    export let baseHeaderModel: BaseHeaderModel;
+<script lang="ts">
+import BaseHeaderModel from "./BaseHeaderModel";
+
+export default {
+  name: "BaseHeaderVue",
+  props: {
+    baseHeaderModel: {
+      type: BaseHeaderModel,
+      required: true
+    }
+  }
+}
+
 </script>
 
-{#if (baseHeaderModel.size === 1)}
-    <h1 class="{baseHeaderModel.style}">{baseHeaderModel.content}</h1>
-{:else if (baseHeaderModel.size === 2)}
-    <h2 class="{baseHeaderModel.style}">{baseHeaderModel.content}</h2>
-{:else if (baseHeaderModel.size === 3)}
-    <h3 class="{baseHeaderModel.style}">{baseHeaderModel.content}</h3>
-{:else if (baseHeaderModel.size === 4)}
-    <h4 class="{baseHeaderModel.style}">{baseHeaderModel.content}</h4>
-{:else if (baseHeaderModel.size === 5)}
-    <h5 class="{baseHeaderModel.style}">{baseHeaderModel.content}</h5>
-{:else}
-    <h6 class="{baseHeaderModel.style}">{baseHeaderModel.content}</h6>
-{/if}
-
-<style>
+<style scoped>
     h1 {
         font-size: 4rem;
     }

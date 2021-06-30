@@ -1,11 +1,11 @@
-export default class BaseParagraphModel {
-    content: string
+export default class BaseLinkModel {
+    content: string | any
     style: string
     linkTo: string
     isInteral: boolean
     hasUnderline: boolean
 
-    constructor(content: string, style: string = 'light',linkTo: string = '/', isInternal: boolean = true, hasUnderline: boolean = true) {
+    constructor(content: string | any, style: string = 'light',linkTo: string = '/', isInternal: boolean = true, hasUnderline: boolean = true) {
         this.content = content
 
         const EXPECTED_STYLES: Array<string> = [

@@ -10,13 +10,13 @@ export const enum ValidationStates {
 }
 
 export class User implements EntityInterface{
-    uid: string
-    email: string
-    username: string
-    createdAt: Date
-    updatedAt: Date
-    password: string
-    repeatPassword?: string
+    uid: string | null = null
+    email: string | null = null
+    username: string | null = null
+    createdAt: Date | null = null
+    updatedAt: Date | null = null
+    password: string | null = null
+    repeatPassword: string | null = null
 
     public createUser(inputs: Array<BaseInputModele>): User{
         for(const input of inputs){
@@ -40,17 +40,17 @@ export class User implements EntityInterface{
 
     private validateUserAtRegistration() : Array<Error>{
         let errors: Array<Error> = [];
-        if(this.email === undefined || this.email === null || this.email === ''){
+        if(this.email === null || this.email === ''){
             const error = new Error('user/register-error/email/empty', 400)
             errors.push(error)
         }
 
-        if(this.username === undefined || this.username === null || this.username === ''){
+        if(this.username === null || this.username === ''){
             const error = new Error('user/register-error/username/empty', 400)
             errors.push(error)
         }
 
-        if(this.password === undefined || this.password === null || this.password === ''){
+        if(this.password === null || this.password === ''){
             const error = new Error('user/register-error/password/empty', 400)
             errors.push(error)
         }

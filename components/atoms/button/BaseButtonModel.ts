@@ -1,5 +1,5 @@
 export default class BaseButtonModel {
-    content: string
+    content: string | any
     style: string
     size: string
     type: string
@@ -12,7 +12,7 @@ export default class BaseButtonModel {
     event: string
 
     constructor(
-        content: string,
+        content: string | any,
         style: string = 'primary',
         type: string = 'submit',
         size: string = 'normal',
@@ -47,7 +47,7 @@ export default class BaseButtonModel {
         if(EXPECTED_SIZES.includes(size) === false){
             throw Error("Size '"+size+"' is not a valid size for BaseButtonModel")
         }
-        this.style = style
+        this.size = size
 
         const EXPECTED_TYPES: Array<string> = [
             'submit',

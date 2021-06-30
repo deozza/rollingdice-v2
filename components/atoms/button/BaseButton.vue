@@ -1,28 +1,46 @@
+<template>
+  <button
+    class="btn"
+    :class="[
+      { [`btn-${baseButtonModel.style}`]: baseButtonModel.style },
+      { 'btn-outline': baseButtonModel.isOutlined },
+      { 'btn-icon': baseButtonModel.isOnlyIcon },
+      { 'btn-round': baseButtonModel.isRound },
+    ]"
+    :type="baseButtonModel.type"
+    :disabled="baseButtonModel.isDisabled || baseButtonModel.isLoading"
+    @click="emitEvent()"
+  >
+    {{baseButtonModel.content}}
+  </button>
+
+</template>
+
 <script lang="ts">
-    import BaseButtonModel from "./BaseButtonModel";
-    import { createEventDispatcher} from "svelte";
-    const dispatch = createEventDispatcher()
+import Vue from 'vue'
 
-    export let baseButtonModel: BaseButtonModel;
+import BaseButtonModel from "./BaseButtonModel";
 
-    function dispatchButtonEvent(e){
-        dispatch('buttonIsClicked')
+export default Vue.extend( {
+  name: "BaseButtonVue",
+  props: {
+    baseButtonModel: {
+      type: BaseButtonModel,
+      required: true
     }
+  },
+  methods: {
+    emitEvent(){
+      this.$emit('buttonClicked')
+    }
+  }
+})
+
+
 </script>
 
-<button
-    class="btn btn-{baseButtonModel.style}"
-    class:btn-outline="{baseButtonModel.isOutlined}"
-    class:btn-icon="{baseButtonModel.isOnlyIcon}"
-    class:btn-round="{baseButtonModel.isRound}"
-    type="{baseButtonModel.type}"
-    disabled="{baseButtonModel.isDisabled || baseButtonModel.isLoading}"
-    on:click={dispatchButtonEvent}
->
-    {baseButtonModel.content}
-</button>
 
-<style>
+<style scoped>
     button.btn {
         display: inline-block;
         font-weight: 400;

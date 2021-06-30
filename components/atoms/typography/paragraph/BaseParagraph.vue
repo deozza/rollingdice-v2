@@ -1,12 +1,23 @@
 <script lang="ts">
-    import BaseParagraphModel from "./BaseParagraphModel";
+import BaseParagraphModel from "./BaseParagraphModel";
 
-    export let baseParagraphModel: BaseParagraphModel;
+export default {
+  name: "BaseParagraphVue",
+  props: {
+    baseParagraphModel: {
+      type: BaseParagraphModel,
+      required: true
+    }
+  }
+}
+
 </script>
+<template>
+  <p :class="baseParagraphModel.style + ' ' + baseParagraphModel.additionalClass">{{baseParagraphModel.content}}</p>
+</template>
 
-<p class="{baseParagraphModel.style} {baseParagraphModel.additionalClass}">{baseParagraphModel.content}</p>
 
-<style>
+<style scoped>
     .light {
         color: black;
     }

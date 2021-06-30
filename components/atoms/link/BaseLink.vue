@@ -1,12 +1,23 @@
 <script lang="ts">
     import BaseLinkModel from "./BaseLinkModel";
 
-    export let baseLinkModel: BaseLinkModel;
+    export default {
+      name: "BaseLinkVue",
+      props: {
+        baseLinkModel: {
+          type: BaseLinkModel,
+          required: true
+        }
+      }
+    }
+
 </script>
 
-<a href="{baseLinkModel.linkTo}" class="{baseLinkModel.style} {baseLinkModel.hasUnderline ? '' : 'no-underline'}" target="{baseLinkModel.isInteral ? '_self' : '_blank'}" >{baseLinkModel.content}</a>
+<template>
+  <a :href="baseLinkModel.linkTo" :class="baseLinkModel.style + ' ' + (baseLinkModel.hasUnderline ? '' : 'no-underline')" :target="baseLinkModel.isInteral ? '_self' : '_blank'" >{{baseLinkModel.content}}</a>
+</template>
 
-<style>
+<style scoped>
     a.light {
         color: black;
     }

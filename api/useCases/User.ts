@@ -7,7 +7,7 @@ import {Error} from "../utils/useCaseResult/types/Error";
 export class User {
 
 
-    public register(inputs: Array<BaseInputModele>, client): Result{
+    public register(inputs: Array<BaseInputModele>): Result{
         let result: Result = new Result()
 
         let user = new UserEntity()
